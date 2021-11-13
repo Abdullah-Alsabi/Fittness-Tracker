@@ -2,6 +2,8 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Programs from "./Pages/Programs";
+import Signup from "./components/Signup";
+import Signin from "./components/Signin";
 function App() {
   return (
     <div className="bg-gray-800  min-h-screen">
@@ -10,6 +12,8 @@ function App() {
 
         <Routes>
           <Route exact path="/" element={<Programs />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/signin" element={<Signin />} />
         </Routes>
       </BrowserRouter>
     </div>
