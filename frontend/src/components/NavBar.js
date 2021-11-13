@@ -29,7 +29,7 @@ function NavBar() {
       {/* SIDE BAR */}
       <div
         style={{ display: flag }}
-        className="sideBar h-screen block text-white bg-opacity-95 bg-gray-900 w-1/2 absolute top-0 text-center md:w-1/3 lg:w-1/4 xl:w-1/6 rounded-tr-3xl rounded-br-3xl"
+        className="sideBar z-10 h-screen block text-white bg-opacity-95 bg-gray-900 w-1/2 absolute top-0 text-center md:w-1/3 lg:w-1/4 xl:w-1/6 rounded-tr-3xl rounded-br-3xl"
       >
         <button
           onClick={() => {
