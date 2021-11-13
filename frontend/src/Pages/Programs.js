@@ -1,7 +1,7 @@
 import p1 from "../images/p1.jpg";
 function Programs() {
   return (
-    <div className="text-white font-bold px-7 py-5 items-center grid  gap-2 lg:grid-cols-3 lg:px-5 md:px-20">
+    <div className="text-white font-bold w-10/12 m-auto py-5 items-center grid  gap-2 lg:grid-cols-3 lg:px-5 ">
       <div
         style={{
           backgroundImage:
@@ -11,7 +11,7 @@ function Programs() {
           backgroundPosition: "center",
           backgroundSize: "cover",
         }}
-        className="h-52 text-center p-3 rounded-lg"
+        className="h-52  text-center p-3 rounded-lg"
       >
         <h1 className="relative top-1/4 text-3xl"> Beginners </h1>
 
