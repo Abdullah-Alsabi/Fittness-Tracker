@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const app = express();
 const port = process.env.PORT || 3001;
 const usersRouter = require("./routers/users");
+const programsRouter = require("./routers/programs");
 require("dotenv").config();
 // Mongoose Here
 const uri = process.env.ATLAS_URI;
@@ -20,6 +21,7 @@ connection.once("open", () => {
 });
 
 app.use("/users", usersRouter);
+app.use("/programs", programsRouter);
 
 app.listen(port, () => {
   console.log(`Server runnong on port: ${port} `);
