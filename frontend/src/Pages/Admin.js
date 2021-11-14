@@ -2,76 +2,17 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "./admin.css";
 function Admin() {
-  let [inputs, setInputs] = useState([]);
-  let [exNames, setExNames] = useState([]);
-  let [exDurations, setExDurations] = useState([]);
-  let [exLinks, setExLinks] = useState([]);
+  const [inputs, setInputs] = useState([]);
+
   console.log(inputs);
-  // console.log(exNames);
-  // console.log(exDurations);
-  // console.log(exLinks);
 
   // ----------------- ERROR HERE ---------
-  function handelDeleteForm(index) {
-    console.log(index);
-    // inputs = [...inputs.slice(0, index), ...inputs.slice(index + 1)];
-    // inputs.splice(index, 0);
-    console.log(inputs);
-    setInputs(
-      [].concat(inputs.slice(0, index)).concat(inputs.slice(index + 1))
-    );
-  }
 
   function handelNewForm() {
-    setInputs([
-      ...inputs,
-      <div className="flex lg:flex-row flex-col w-full ">
-        <div className="lg:w-11/12 w-full">
-          <div className="grid lg:grid-cols-3 grid-cols-1 gap-2">
-            <input
-              type="text"
-              className="block border  border-gray-400 w-full p-3 rounded mb-4"
-              name="p1_counter"
-              placeholder="Exercisers Name"
-              onChange={(e) => {
-                exNames[inputs.length] = e.target.value;
-                setExNames(exNames);
-              }}
-            />
-            <input
-              type="text"
-              className="block border border-gray-400 w-full p-3 rounded mb-4"
-              name="p2_counter"
-              placeholder="Exercisers duration"
-              onChange={(e) => {
-                exDurations[inputs.length] = e.target.value;
-                setExDurations(exDurations);
-              }}
-            />
-            <input
-              type="text"
-              className="block border border-gray-400 w-full p-3 rounded mb-4"
-              name="p3_counter"
-              placeholder="Exercisers Image Link"
-              onChange={(e) => {
-                exLinks[inputs.length] = e.target.value;
-                setExLinks(exLinks);
-              }}
-            />
-          </div>
-        </div>
-        <div className="lg:w-1/12 w-full lg:ml-2 ml-0">
-          <button
-            onClick={() => {
-              handelDeleteForm(inputs.length);
-            }}
-            className="border border-gray-400 w-full bg-red-700 rounded text-white mb-4  p-3"
-          >
-            -
-          </button>
-        </div>
-      </div>,
-    ]);
+    setInputs([...inputs, {}]);
+  }
+  function handelDeleteForm(element, i) {
+    setInputs(inputs.filter((item) => item.name !== element.name));
   }
 
   return (
@@ -98,7 +39,60 @@ function Admin() {
           >
             <h1 className="text-3xl font-extrabold">+</h1>
           </button>
-          {inputs}
+
+          {inputs.map((element, i) => {
+            return (
+              <div className="flex lg:flex-row flex-col w-full ">
+                <div className="lg:w-11/12 w-full">
+                  <div className="grid lg:grid-cols-3 grid-cols-1 gap-2">
+                    <input
+                      type="text"
+                      className="block border  border-gray-400 w-full p-3 rounded mb-4"
+                      name="p1_counter"
+                      placeholder="Exercisers Name"
+                      value={element.name}
+                      onChange={(e) => {
+                        element.name = e.target.value;
+                        setInputs([...inputs]);
+                      }}
+                    />
+                    <input
+                      type="text"
+                      className="block border border-gray-400 w-full p-3 rounded mb-4"
+                      name="p2_counter"
+                      placeholder="Exercisers duration"
+                      value={element.duration}
+                      onChange={(e) => {
+                        element.duration = e.target.value;
+                        setInputs([...inputs]);
+                      }}
+                    />
+                    <input
+                      type="text"
+                      className="block border border-gray-400 w-full p-3 rounded mb-4"
+                      name="p3_counter"
+                      placeholder="Exercisers Image Link"
+                      value={element.link}
+                      onChange={(e) => {
+                        element.link = e.target.value;
+                        setInputs([...inputs]);
+                      }}
+                    />
+                  </div>
+                </div>
+                <div className="lg:w-1/12 w-full lg:ml-2 ml-0">
+                  <button
+                    onClick={() => {
+                      handelDeleteForm(element, i);
+                    }}
+                    className="border border-gray-400 w-full bg-red-700 rounded text-white mb-4 p-3"
+                  >
+                    -
+                  </button>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
