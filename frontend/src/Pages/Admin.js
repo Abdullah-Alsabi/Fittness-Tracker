@@ -6,18 +6,31 @@ function Admin() {
   let [exNames, setExNames] = useState([]);
   let [exDurations, setExDurations] = useState([]);
   let [exLinks, setExLinks] = useState([]);
-  console.log(exNames);
-  console.log(exDurations);
-  console.log(exLinks);
+  console.log(inputs);
+  // console.log(exNames);
+  // console.log(exDurations);
+  // console.log(exLinks);
+
+  // ----------------- ERROR HERE ---------
+  function handelDeleteForm(index) {
+    console.log(index);
+    // inputs = [...inputs.slice(0, index), ...inputs.slice(index + 1)];
+    // inputs.splice(index, 0);
+    console.log(inputs);
+    setInputs(
+      [].concat(inputs.slice(0, index)).concat(inputs.slice(index + 1))
+    );
+  }
+
   function handelNewForm() {
     setInputs([
       ...inputs,
-      <div className="flex flex-row w-full">
-        <div className="w-11/12">
-          <div className="grid grid-cols-3 gap-2">
+      <div className="flex lg:flex-row flex-col w-full ">
+        <div className="lg:w-11/12 w-full">
+          <div className="grid lg:grid-cols-3 grid-cols-1 gap-2">
             <input
               type="text"
-              className="block border w- border-gray-400 w-full p-3 rounded mb-4"
+              className="block border  border-gray-400 w-full p-3 rounded mb-4"
               name="p1_counter"
               placeholder="Exercisers Name"
               onChange={(e) => {
@@ -47,8 +60,13 @@ function Admin() {
             />
           </div>
         </div>
-        <div className="w-1/12 ml-2">
-          <button className="border border-gray-400 w-full bg-red-700 rounded text-white mb-4 p-3">
+        <div className="lg:w-1/12 w-full lg:ml-2 ml-0">
+          <button
+            onClick={() => {
+              handelDeleteForm(inputs.length);
+            }}
+            className="border border-gray-400 w-full bg-red-700 rounded text-white mb-4  p-3"
+          >
             -
           </button>
         </div>
@@ -75,10 +93,10 @@ function Admin() {
             placeholder="Background Image Link"
           />
           <button
-            className=" border border-gray-400 bg-blue-700 w-1/12 m-auto rounded text-white mb-4 p-1"
+            className=" border border-gray-400 bg-blue-700 min-w-max w-2/12 m-auto rounded text-white mb-4 p-3"
             onClick={handelNewForm}
           >
-            +
+            <h1 className="text-3xl font-extrabold">+</h1>
           </button>
           {inputs}
         </div>
