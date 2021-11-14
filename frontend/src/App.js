@@ -2,8 +2,8 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Programs from "./Pages/Programs";
-import Signup from "./components/Signup";
-import Signin from "./components/Signin";
+import Signup from "./Pages/Signup";
+import Signin from "./Pages/Signin";
 function App() {
   return (
     <div className="bg-gray-800  min-h-screen">
