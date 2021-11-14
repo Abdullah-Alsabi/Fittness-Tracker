@@ -24,7 +24,9 @@ function NavBar() {
             <rect y="11" width="27" height="5" rx="2.5" fill="white" />
           </svg>
         </button>
-        <button>sign in</button>
+        <Link className="text-lg font-bold" to="/signin">
+          sign in
+        </Link>
       </div>
       {/* SIDE BAR */}
       <div
