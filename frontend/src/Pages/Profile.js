@@ -21,21 +21,20 @@ function Profile() {
 
   return (
     <div className=" min-h-full flex flex-col p-2 pt-4 md:p-10 lg:p-10 xl:p-10">
-      <div className="container  max-w-lg m-auto  flex flex-1 flex-col items-center justify-center px-20 ">
+      <div className="container  m-auto  flex flex-1 flex-col items-center justify-center px-20 ">
         <div className="bg-white flex flex-col px-6 py-8 rounded shadow-md text-black cardWidth  ">
-          <div className="flex flex-row justify-between">
-            <h1 className="mb-8 text-3xl text-center">User Profile</h1>
+          <div className="flex flex-row justify-between pb-5">
+            <h1 className=" text-3xl text-center">User Profile</h1>
             <button
               onClick={hundleEdit}
               type="submit"
-              className="w-4/12 text-center py-3 rounded bg-green-500 text-white hover:bg-green-700  focus:outline-none my-1"
+              className="  w-4/12 text-center py-3 rounded bg-green-500 text-white hover:bg-green-700  focus:outline-none "
             >
               {" "}
               Edit
             </button>
           </div>
           <hr className="pb-5" />
-
           <input
             type="text"
             className="block border border-gray-400 w-full p-3 rounded mb-4"
@@ -78,13 +77,15 @@ function Profile() {
             placeholder={"80" + " kg"}
             disabled
           />
-          <button
-            onClick={hundleUpdate}
-            type="submit"
-            className="w-auto text-center py-3 rounded bg-green-500 text-white hover:bg-green-700  focus:outline-none my-1"
-          >
-            Update
-          </button>
+          <div className="text-center">
+            <button
+              onClick={hundleUpdate}
+              type="submit"
+              className="w-auto text-center py-3 rounded bg-green-500 text-white hover:bg-green-700  focus:outline-none my-1 lg:w-8/12 "
+            >
+              Update
+            </button>
+          </div>
         </div>
       </div>
     </div>
