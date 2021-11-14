@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import Programs from "./Pages/Programs";
 import Signup from "./Pages/Signup";
 import Signin from "./Pages/Signin";
+import Profile from "./Pages/Profile";
 function App() {
   return (
     <div className="bg-gray-800  min-h-screen">
@@ -14,6 +15,7 @@ function App() {
           <Route exact path="/" element={<Programs />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </BrowserRouter>
     </div>
