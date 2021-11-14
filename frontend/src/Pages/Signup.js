@@ -26,7 +26,7 @@ function Signup() {
 
   function hundleRgister(e) {
     e.preventDefault();
-    if (password === passwordTwo) {
+    if (password === passwordTwo && true) {
       let user = {
         name: name,
         email: email,
@@ -35,6 +35,7 @@ function Signup() {
       Axios.post("http://localhost:3001/users/add", user)
         .then((res) => {
           console.log(res.data);
+          res.redirect("/");
         })
         .catch((err) => {
           console.log(err);
@@ -74,6 +75,40 @@ function Signup() {
             name="confirm_password"
             placeholder="Confirm Password"
           />
+          <div className="grid grid-cols-3 gap-2">
+            <select
+              className="block border border-gray-400 w-full p-3 rounded mb-4"
+              name="monthes"
+              id="monthes"
+            >
+              <option value={1}>January</option>
+              <option value={2}>February</option>
+              <option value={3}>March</option>
+              <option value={4}>April</option>
+              <option value={5}>May</option>
+              <option value={6}>June</option>
+              <option value={7}>July</option>
+              <option value={8}>August</option>
+              <option value={9}>September</option>
+              <option value={10}>October</option>
+              <option value={11}>November</option>
+              <option value={12}>December</option>
+            </select>
+            <input
+              onChange={hundleEmailChange}
+              type="text"
+              className="block border border-gray-400 w-full p-3 rounded mb-4"
+              name="day"
+              placeholder="day"
+            />
+            <input
+              onChange={hundleEmailChange}
+              type="text"
+              className="block border border-gray-400 w-full p-3 rounded mb-4"
+              name="year"
+              placeholder="year"
+            />
+          </div>
           <button
             onClick={hundleRgister}
             type="submit"
