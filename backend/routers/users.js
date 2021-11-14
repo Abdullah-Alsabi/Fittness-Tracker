@@ -44,7 +44,7 @@ router.post("/add", (req, res) => {
     });
 });
 
-// ------------------------ ROUTER FOR (EDIT USER INFO )
+// ------------------------ ROUTER FOR (EDIT USER INFO BY ID )
 router.put("/edit/:id", (req, res) => {
   users.findById(req.params.id).then((user) => {
     if (req.body.name != undefined) user.name = req.body.name;
