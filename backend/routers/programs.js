@@ -42,7 +42,14 @@ router.delete("/delete/:id", (req, res) => {
   programs
     .findByIdAndDelete(req.params.id)
     .then(() => {
-      res.json("program deleted!!");
+      programs
+        .find()
+        .then((data) => {
+          res.json(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     })
     .catch((err) => {
       console.log(err);
