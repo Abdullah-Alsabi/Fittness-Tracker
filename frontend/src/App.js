@@ -7,6 +7,7 @@ import Signin from "./Pages/Signin";
 import Profile from "./Pages/Profile";
 import DashBoard from "./Pages/DashBoard";
 import Admin from "./Pages/Admin";
+import Exercises from "./Pages/Exercises";
 function App() {
   return (
     <div className="bg-gray-800  min-h-screen">
@@ -20,6 +21,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/DashBoard" element={<DashBoard />} />
+          <Route path="/exercises" element={<Exercises />} />
         </Routes>
       </BrowserRouter>
     </div>

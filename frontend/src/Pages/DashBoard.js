@@ -4,6 +4,8 @@ import { GiWaterBottle } from "react-icons/gi";
 import { GiBodyHeight } from "react-icons/gi";
 import { FaWeight } from "react-icons/fa";
 import { GiWeightScale } from "react-icons/gi";
+import GaugeIcon from "../images/Gauge-icon.svg";
+import GaugeIconImg from "../images/gauge-icon-27.jpg";
 
 function DashBoard() {
   let [counterP1, setcounterP1] = useState(0);
@@ -66,7 +68,7 @@ function DashBoard() {
   }
 
   return (
-    <div className="grid grid-cols  gap-4 p-4 lg:grid-cols-2 xl:grid-cols-3">
+    <div className="grid grid-cols  gap-4 p-4 pt-10 lg:grid-cols-2 xl:grid-cols-3 xl:px-40">
       <div className="flex flex-row   p-4 justify-around items-center h-36 text-center shadow-lg rounded bg-gradient-to-r from-green-400 to-blue-500  ">
         <div className="w-2/6 flex justify-center">
           <IoIosFitness className="text-green-700 text-5xl text-left" />
@@ -138,7 +140,11 @@ function DashBoard() {
       </div>
       <div className="flex flex-row p-4 justify-around items-center h-36 text-center shadow-md rounded bg-gradient-to-r from-red-400 to-red-300">
         <div className="w-2/6 flex justify-center">
-          <GiWeightScale className="text-primary text-5xl text-left" />
+          <img
+            className=" h-12 w-12 text-left"
+            src={GaugeIconImg}
+            alt="GaugeIcon"
+          />
         </div>
         <div className="w-4/6">
           <h2 className="text-xl text-white font-medium mt-2"> BMI </h2>

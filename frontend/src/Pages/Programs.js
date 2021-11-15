@@ -1,5 +1,5 @@
 import p1 from "../images/p1.jpg";
-
+import { Link } from "react-router-dom";
 // import gif
 // import gifpic from "../images/7ed6d7c74d9befc91815a3afe73d6ec7.gif";
 //use gif
@@ -24,10 +24,12 @@ function Programs() {
 
           <div className="relative top-1/2 w-full flex">
             <p className="w-2/3">10 exercises, 2min</p>
-            <button className=" m-auto bg-white text-black rounded-lg py-1 px-3">
-              {" "}
-              Go Train{" "}
-            </button>
+            <Link to="/exercises">
+              <button className=" m-auto bg-white text-black rounded-lg py-1 px-3">
+                {" "}
+                Go Train{" "}
+              </button>
+            </Link>
           </div>
         </div>
       </div>
