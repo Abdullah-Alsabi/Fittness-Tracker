@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import p1 from ".././../images/p1.jpg";
+
 import axios from "axios";
 function Admin() {
   const [programs, setPrograms] = useState([]);
