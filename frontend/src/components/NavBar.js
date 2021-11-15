@@ -56,7 +56,7 @@ function NavBar() {
             />
           </svg>
         </button>
-        <Link className="block  py-3 " to="/">
+        <Link className="block  py-3 " to="/programs">
           PROGRAMS
         </Link>
         <Link className="block  py-3 " to="/profile">

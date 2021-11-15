@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
+import HomePage from "./Pages/HomePage";
 import Programs from "./Pages/Programs";
 import Signup from "./Pages/Signup";
 import Signin from "./Pages/Signin";
@@ -8,6 +9,7 @@ import Profile from "./Pages/Profile";
 import DashBoard from "./Pages/DashBoard";
 import Admin from "./Pages/Admin/Admin";
 import AddNewProgram from "./Pages/Admin/AddNewProgram";
+import EditProgram from "./Pages/Admin/EditProgram";
 
 function App() {
   return (
@@ -16,13 +18,15 @@ function App() {
         <NavBar />
 
         <Routes>
-          <Route exact path="/" element={<Programs />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/signin" element={<Signin />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route exact path="/" element={<HomePage />} />
+          <Route exact path="/programs" element={<Programs />} />
+          <Route path="/Signup" element={<Signup />} />
+          <Route path="/Signin" element={<Signin />} />
+          <Route path="/Profile" element={<Profile />} />
+          <Route path="/Admin" element={<Admin />} />
           <Route path="/DashBoard" element={<DashBoard />} />
           <Route path="/AddNewProgram" element={<AddNewProgram />} />
+          <Route path="/EditProgram/:id" element={<EditProgram />} />
         </Routes>
       </BrowserRouter>
     </div>
