@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import p1 from ".././../images/p1.jpg";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 function Admin() {
+  const navigate = useNavigate();
   const [programs, setPrograms] = useState([]);
   useEffect(() => {
     axios
@@ -46,7 +47,7 @@ function Admin() {
         </Link>
       </div>
       <div className="text-white">
-        <div className="text-white font-bold w-10/12 m-auto py-5 items-center grid  gap-2 lg:grid-cols-3 lg:px-5 ">
+        <div className="text-white font-bold w-10/12 m-auto py-5 items-center grid  gap-3 md:grid-cols-2 xl:grid-cols-3 lg:px-5 ">
           {programs.map((el) => {
             return (
               <div
@@ -69,7 +70,12 @@ function Admin() {
                     min
                   </p>
                   <div className="flex flex-col w-full justify-center py-1 px-10">
-                    <button className=" mb-1 bg-blue-600 w- text-white rounded-lg py-1 px-3">
+                    <button
+                      onClick={() => {
+                        navigate("/editProgram/" + el._id);
+                      }}
+                      className=" mb-1 bg-blue-600 w- text-white rounded-lg py-1 px-3"
+                    >
                       Edit
                     </button>
                     <button

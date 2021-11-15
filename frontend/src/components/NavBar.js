@@ -79,9 +79,6 @@ function NavBar() {
           onClick={() => {
             setFlag("none");
           }}
-          style={{ display: flag }}
-          className=" h-screen  block w-full bg-transparent fixed top-0"
-        ></div>
       </div>
     </div>
   );
