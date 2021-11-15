@@ -6,7 +6,8 @@ import Signup from "./Pages/Signup";
 import Signin from "./Pages/Signin";
 import Profile from "./Pages/Profile";
 import DashBorad from "./Pages/DashBorad";
-import Admin from "./Pages/Admin";
+import Admin from "./Pages/Admin/Admin";
+import AddNewProgram from "./Pages/Admin/AddNewProgram";
 function App() {
   return (
     <div className="bg-gray-800  min-h-screen">
@@ -19,6 +20,7 @@ function App() {
           <Route path="/signin" element={<Signin />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/AddNewProgram" element={<AddNewProgram />} />
           <Route path="/dashboard" element={<DashBorad />} />
         </Routes>
       </BrowserRouter>
