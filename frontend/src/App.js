@@ -6,7 +6,7 @@ import Signup from "./Pages/Signup";
 import Signin from "./Pages/Signin";
 import Profile from "./Pages/Profile";
 import DashBoard from "./Pages/DashBoard";
-import Admin from "./Pages/Admin";
+import Admin from "./Pages/Admin/Admin";
 import AddNewProgram from "./Pages/Admin/AddNewProgram";
 
 function App() {
@@ -23,8 +23,6 @@ function App() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/DashBoard" element={<DashBoard />} />
           <Route path="/AddNewProgram" element={<AddNewProgram />} />
-        
-
         </Routes>
       </BrowserRouter>
     </div>
