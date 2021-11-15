@@ -10,6 +10,17 @@ router.get("/", (req, res) => {
       if (err) throw err;
     });
 });
+// ------------------------ ROUTER FOR (GET PROGRAM BY ID)
+router.get("/getProgram/:id", (req, res) => {
+  programs
+    .findById(req.params.id)
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      if (err) throw err;
+    });
+});
 // ------------------------ ROUTER FOR (ADD NEW PROGRAM)
 router.post("/add", (req, res) => {
   const title = req.body.title;
