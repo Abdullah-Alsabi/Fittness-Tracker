@@ -8,6 +8,7 @@ import Signin from "./Pages/Signin";
 import Profile from "./Pages/Profile";
 import DashBoard from "./Pages/DashBoard";
 import Admin from "./Pages/Admin/Admin";
+import Exercises from "./Pages/Exercises";
 import AddNewProgram from "./Pages/Admin/AddNewProgram";
 import EditProgram from "./Pages/Admin/EditProgram";
 
@@ -25,8 +26,10 @@ function App() {
           <Route path="/Profile" element={<Profile />} />
           <Route path="/Admin" element={<Admin />} />
           <Route path="/DashBoard" element={<DashBoard />} />
+          <Route path="/exercises" element={<Exercises />} />
           <Route path="/AddNewProgram" element={<AddNewProgram />} />
           <Route path="/EditProgram/:id" element={<EditProgram />} />
+
         </Routes>
       </BrowserRouter>
     </div>
