@@ -89,8 +89,12 @@ function Exercises() {
         <img className="p-4 " src={ExercisesGif} alt="Squats" />
         <p className="text-white font-semibold text-2xl">{ExercisesName} </p>
         <span className=" bg-gray-100 rounded-full w-max p-4 mt-5 mb-5 font-semibold text-2xl text-gray-700">
-          <span>
-            {ExercisesDuration} <span style={{ display: secFlag }}>sec</span>
+          <span className="flex justify-center items-center  w-10 h-10 lg:w-16  lg:h-16">
+            {ExercisesDuration}{" "}
+            <span className="ml-1" style={{ display: secFlag }}>
+              {" "}
+              sec
+            </span>
           </span>
         </span>
       </div>
