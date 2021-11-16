@@ -38,4 +38,3 @@ function Timer({ expiryTimestamp, flag }) {
     </div>
   );
 }
-export default Timer;
