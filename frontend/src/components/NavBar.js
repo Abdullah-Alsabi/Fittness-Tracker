@@ -32,7 +32,7 @@ function NavBar() {
       <div className="flex flex-col ">
         <div
           style={{ display: flag }}
-          className="sideBar z-10 h-screen block text-white bg-opacity-95 bg-gray-900 w-1/2 fixed top-0 text-center md:w-1/3 lg:w-1/4 xl:w-1/6 rounded-tr-3xl rounded-br-3xl"
+          className="sideBar z-20 h-screen block text-white bg-opacity-95 bg-gray-900 w-1/2 fixed top-0 text-center md:w-1/3 lg:w-1/4 xl:w-1/6 rounded-tr-3xl rounded-br-3xl"
         >
           <button
             onClick={() => {
@@ -76,9 +76,11 @@ function NavBar() {
           </Link>
         </div>
         <div
+          className="h-screen block z-10 w-full bg-transparent fixed "
           onClick={() => {
             setFlag("none");
           }}
+        ></div>
       </div>
     </div>
   );
