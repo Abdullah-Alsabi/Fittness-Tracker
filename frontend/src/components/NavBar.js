@@ -57,7 +57,11 @@ function NavBar() {
               />
             </svg>
           </button>
-          <Link onClick={() => setFlag("none")} className="block  py-3 " to="/">
+          <Link
+            onClick={() => setFlag("none")}
+            className="block  py-3 "
+            to="/programs"
+          >
             PROGRAMS
           </Link>
           <Link
@@ -76,7 +80,8 @@ function NavBar() {
           </Link>
         </div>
         <div
-          className="h-screen block z-10 w-full bg-transparent fixed "
+          className="h-screen block w-full bg-transparent fixed "
+          style={{ display: flag }}
           onClick={() => {
             setFlag("none");
           }}
