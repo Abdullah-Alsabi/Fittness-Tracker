@@ -9,22 +9,49 @@ function Exercises() {
   const [ExercisesDuration, setExercisesDuration] = useState(0);
   const [ExercisesGif, setExercisesGif] = useState();
   //get the data
-  const [BtnStatus, setBtnStatus] = useState("Start");
+  const [BtnStatus, setBtnStatus] = useState("block");
+  const [secFlag, setSecFlag] = useState("inline");
 
   const [programs, setPrograms] = useState([]);
-
+  const RestObj = {
+    name: "Rest",
+    duration: 15,
+    link: "https://lh3.googleusercontent.com/proxy/F0_6rPop8sEdbwUpjMZSSzLR7CV9n0mzZjOggPwpVavaf0OhD6nhTyLgggjAwjCmZ16aNhoF2FWLm7_1Gkw2P6hK-nwpTn1cELEXKrA",
+  };
   function Timer(i) {
+    let invervalRest;
     let inverval = setInterval(() => {
       if (ExercisesDuration >= 1)
         setExercisesDuration((ExercisesDuration) => ExercisesDuration - 1);
       else clearInterval(inverval);
     }, 1000);
-    let counter = i + 1 < programs.exercises.length ? 1000 : 0;
+    let counter = i + 1 < programs.exercises.length ? 16000 : 0;
+    // let RestTime = i + 1 < programs.exercises.length ? 1000 : 0;
+    setTimeout(() => {
+      clearInterval(inverval);
+      setExercisesName(RestObj.name);
+      if (i + 1 < programs.exercises.length)
+        setExercisesDuration(RestObj.duration);
+      else {
+        setExercisesDuration("Done");
+        setSecFlag("none");
+      }
+
+      setExercisesGif(RestObj.link);
+      invervalRest = setInterval(() => {
+        if (ExercisesDuration >= 1)
+          setExercisesDuration((ExercisesDuration) => ExercisesDuration - 1);
+        else clearInterval(invervalRest);
+      }, 1000);
+    }, ExercisesDuration * 1000);
+
+    // **********************
+
     setTimeout(() => {
       // ---
       let id = i + 1;
+      clearInterval(invervalRest);
 
-      clearInterval(inverval);
       if (id < programs.exercises.length) {
         setExercisesName(programs.exercises[id].name);
         setExercisesDuration(programs.exercises[id].duration);
@@ -62,17 +89,21 @@ function Exercises() {
         <img className="p-4 " src={ExercisesGif} alt="Squats" />
         <p className="text-white font-semibold text-2xl">{ExercisesName} </p>
         <span className=" bg-gray-100 rounded-full w-max p-4 mt-5 mb-5 font-semibold text-2xl text-gray-700">
-          <span>{ExercisesDuration} sec</span>
+          <span>
+            {ExercisesDuration} <span style={{ display: secFlag }}>sec</span>
+          </span>
         </span>
       </div>
       <button
+        style={{ display: BtnStatus }}
         onClick={() => {
           Timer(0);
+          setBtnStatus("none");
         }}
         className="text-white bg-primary p-2 mt-5 rounded"
         type="submit"
       >
-        {BtnStatus}
+        Start
       </button>
     </div>
   );
