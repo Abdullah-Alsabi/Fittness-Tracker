@@ -67,7 +67,7 @@ function Admin() {
                   <p className="w-2/3">
                     {el.exercises.length} exercises,
                     {totalDurations(el.exercises)}
-                    min
+                    sec
                   </p>
                   <div className="flex flex-col w-full justify-center py-1 px-10">
                     <button
