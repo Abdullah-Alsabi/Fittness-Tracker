@@ -1,6 +1,7 @@
+import header from "../images/background.jfif";
+
 import { BsLinkedin } from "react-icons/bs";
 import { AiFillGithub } from "react-icons/ai";
-import header from "../images/background.jfif";
 import { Link } from "react-router-dom";
 
 function HomePage() {
@@ -53,15 +54,15 @@ function HomePage() {
         <div className="lg:w-1/2 md:px-2 flex items-center">
           <img
             className="transform  -skew-x-12"
-            src="https://www.cnet.com/a/img/sRejNDr7D67rMcvwI11v6xrJcho=/940x0/2019/11/12/e66cc0f3-c6b8-4f6e-9561-e23e08413ce1/gettyimages-1002863304.jpg"
+            src="https://img.dtcn.com/image/themanual/difficult-doesnt-mean-impossible-800x800.jpg"
             alt=""
           />
         </div>
         <div className="pt-2 flex flex-col justify-center font-mono lg:w-1/2 md:px-2 md:text-xl lg:text-2xl xl:text-3xl items-center text-center">
           <h1 className="font-bold">Experts</h1>
           <hr className="text-white h-1 w-3/4" />
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non
-          eleifend lectus. Aliquam mi augue, bibendum eget faucibus in.
+          When workout becomes part of your daily routine, you are now a class
+          of experts.
         </div>
       </div>
       <div className=" py-3">
