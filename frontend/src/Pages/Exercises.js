@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { BsPlayCircleFill } from "react-icons/bs";
 import { BsPauseCircleFill } from "react-icons/bs";
 import axios from "axios";
+import { useNavigate,useParams } from "react-router-dom";
 
 function Exercises() {
   const [ExercisesName, setExercisesName] = useState("");
@@ -18,6 +19,11 @@ function Exercises() {
     duration: 15,
     link: "https://lh3.googleusercontent.com/proxy/F0_6rPop8sEdbwUpjMZSSzLR7CV9n0mzZjOggPwpVavaf0OhD6nhTyLgggjAwjCmZ16aNhoF2FWLm7_1Gkw2P6hK-nwpTn1cELEXKrA",
   };
+
+
+  const params = useParams();
+
+
   function Timer(i) {
     let invervalRest;
     let inverval = setInterval(() => {
@@ -61,14 +67,15 @@ function Exercises() {
     }, ExercisesDuration * 1000 + counter);
   }
   useEffect(() => {
+    console.log(params.id);
     axios
-      .get("http://localhost:3001/programs/")
-      .then((res) => {
-        console.log(res.data[0]);
-        setPrograms(res.data[0]);
-        setExercisesName(res.data[0].exercises[0].name);
-        setExercisesDuration(res.data[0].exercises[0].duration);
-        setExercisesGif(res.data[0].exercises[0].link);
+    .get(`http://localhost:3001/programs/getProgram/${params.id}`)
+    .then((res) => {
+        console.log(res.data);
+        setPrograms(res.data);
+        setExercisesName(res.data.exercises[0].name);
+        setExercisesDuration(res.data.exercises[0].duration);
+        setExercisesGif(res.data.exercises[0].link);
       })
 
       .catch((err) => {

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
 // import gif
 // import gifpic from "../images/7ed6d7c74d9befc91815a3afe73d6ec7.gif";
 //use gif
@@ -13,7 +14,7 @@ function Programs() {
   const [programs, setPrograms] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3001/programs/")
+      .get(`http://localhost:3001/programs/`)
       .then((res) => {
         console.log(res.data);
         setPrograms(res.data);

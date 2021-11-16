@@ -1,4 +1,6 @@
 const router = require("express").Router();
+const jwt = require("jsonwebtoken");
+const JWT_SECRT = "KDSL546H54KHDFJH54656G%#%$rR54756TE$%#%4%^$$235G4FDG6854";
 let users = require("../models/users.model");
 router.get("/", (req, res) => {
   users
@@ -22,7 +24,7 @@ router.post("/add", (req, res) => {
   const program3 = 0;
   const height = 0;
   const weight = 0;
-
+  const type = "user";
   const newUser = new users({
     name,
     email,
@@ -33,6 +35,7 @@ router.post("/add", (req, res) => {
     program3,
     height,
     weight,
+    type,
   });
   newUser
     .save()
@@ -91,9 +94,26 @@ router.post("/checkSignIn", (req, res) => {
   users.findOne(
     { email: req.body.email, password: req.body.password },
     function (err, obj) {
+      if (err) res.json(err);
       if (obj == null) res.json(false);
-      else res.json(obj);
+      else {
+        const token = jwt.sign(
+          {
+            _id: obj._id,
+            name: obj.name,
+            email: obj.email,
+            height: obj.height,
+            weight: obj.weight,
+            program1: obj.program1,
+            program2: obj.program2,
+            program3: obj.program3,
+          },
+          JWT_SECRT
+        );
+        res.json(token);
+      }
     }
   );
 });
+
 module.exports = router;
