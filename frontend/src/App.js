@@ -26,7 +26,7 @@ function App() {
           <Route path="/Profile" element={<Profile />} />
           <Route path="/Admin" element={<Admin />} />
           <Route path="/DashBoard" element={<DashBoard />} />
-          <Route path="/exercises" element={<Exercises />} />
+          <Route path="/exercises/:id" element={<Exercises />} />
           <Route path="/AddNewProgram" element={<AddNewProgram />} />
           <Route path="/EditProgram/:id" element={<EditProgram />} />
 

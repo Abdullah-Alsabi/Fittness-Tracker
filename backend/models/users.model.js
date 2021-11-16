@@ -11,6 +11,7 @@ const userSchema = new Schema(
     program1: { type: Number, required: false },
     program2: { type: Number, required: false },
     program3: { type: Number, required: false },
+    type: { type: String, required: false },
   },
   {
     timestamps: true,
