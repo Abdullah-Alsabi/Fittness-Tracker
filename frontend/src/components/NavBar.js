@@ -59,21 +59,21 @@ function NavBar() {
           </button>
           <Link
             onClick={() => setFlag("none")}
-            className="block  py-3 "
+            className="block hover:bg-gray-600 py-3 "
             to="/programs"
           >
             PROGRAMS
           </Link>
           <Link
             onClick={() => setFlag("none")}
-            className="block  py-3 "
+            className="block hover:bg-gray-600 py-3 "
             to="/profile"
           >
             PROFILE
           </Link>
           <Link
             onClick={() => setFlag("none")}
-            className="block  py-3 "
+            className="block hover:bg-gray-600 py-3 "
             to="/Dashboard"
           >
             DASHBOARD
