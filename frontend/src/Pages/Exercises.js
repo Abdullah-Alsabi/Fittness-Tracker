@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { BsPlayCircleFill } from "react-icons/bs";
 import { BsPauseCircleFill } from "react-icons/bs";
+
 import axios from "axios";
-import { useNavigate,useParams } from "react-router-dom";
 
 function Exercises() {
   const [ExercisesName, setExercisesName] = useState("");
@@ -20,9 +21,7 @@ function Exercises() {
     link: "https://lh3.googleusercontent.com/proxy/F0_6rPop8sEdbwUpjMZSSzLR7CV9n0mzZjOggPwpVavaf0OhD6nhTyLgggjAwjCmZ16aNhoF2FWLm7_1Gkw2P6hK-nwpTn1cELEXKrA",
   };
 
-
   const params = useParams();
-
 
   function Timer(i) {
     let invervalRest;
@@ -69,8 +68,8 @@ function Exercises() {
   useEffect(() => {
     console.log(params.id);
     axios
-    .get(`http://localhost:3001/programs/getProgram/${params.id}`)
-    .then((res) => {
+      .get(`http://localhost:3001/programs/getProgram/${params.id}`)
+      .then((res) => {
         console.log(res.data);
         setPrograms(res.data);
         setExercisesName(res.data.exercises[0].name);
