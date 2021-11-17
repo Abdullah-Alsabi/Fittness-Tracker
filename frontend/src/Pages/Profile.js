@@ -11,7 +11,7 @@ function Profile() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [date, setDate] = useState("");
-  const [height, setheight] = useState(0);
+  const [height, setHeight] = useState(0);
   const [weight, setWeight] = useState(0);
 
   //get data
@@ -19,20 +19,27 @@ function Profile() {
     const token = localStorage.getItem("Token");
     let user = JSON.parse(atob(token));
     axios
-      .get(`/userData/${user._id}`)
+      .get(`http://localhost:3001/users/userData/${user._id}`)
       .then((res) => {
         setlogedUserData(res.data);
+        setName(res.data.name);
+        setEmail(res.data.email);
+        setDate(res.data.birthDate);
+        setWeight(res.data.weight);
+        setHeight(res.data.height);
+
+        console.log(res.data);
       })
       .catch((err) => {
         if (err) console.log(err);
       });
-  });
+  }, []);
 
   // loading component
-  if (loading) return <div className="text-white">LOADING ...</div>;
+  // if (loading) return <div className="text-white">LOADING ...</div>;
 
   // hundle date
-  let userBirthDate = logedUserData.birthDate;
+  // let userBirthDate = logedUserData.birthDate;
 
   function stringToDate(_date, _format, _delimiter) {
     let arr = _date.split("T");
@@ -50,10 +57,10 @@ function Profile() {
       month,
       dateItems[dayIndex]
     );
-    console.log(formatedDate);
+    // console.log(formatedDate);
     return formatedDate;
   }
-  let dateAfterConvert = stringToDate(userBirthDate, "yyyy-mm-dd", "-");
+  let dateAfterConvert = stringToDate(date, "yyyy-mm-dd", "-");
 
   let formatedDate =
     dateAfterConvert.getFullYear() +
@@ -86,7 +93,7 @@ function Profile() {
   }
   function hundleHeightChange(e) {
     console.log(e.target.value);
-    setheight(e.target.value);
+    setHeight(e.target.value);
   }
   function hundleWeightChange(e) {
     console.log(e.target.value);
@@ -101,15 +108,19 @@ function Profile() {
     const data = {
       name: name,
       email: email,
-      birthDate: new Date(),
+      birthDate: date,
       height: height,
       weight: weight,
     };
-    // console.log(new Date(date));
+    console.log(data);
+
+    const token = localStorage.getItem("Token");
+    let user = JSON.parse(atob(token));
     axios
-      .put(`http://localhost:3001/users/edit/${logedUserData._id}`, data)
+      .put(`http://localhost:3001/users/edit/${user._id}`, data)
       .then((res) => {
         navigate("/profile");
+        console.log(res);
       })
       .catch((err) => {
         if (err) console.log(err);
@@ -139,7 +150,7 @@ function Profile() {
             type="text"
             className="block border border-gray-400 w-full p-3 rounded mb-4"
             name="Name"
-            defaultValue={logedUserData.name}
+            defaultValue={name}
             onChange={hundleNameChange}
             placeholder="Abdullah"
             disabled
@@ -148,7 +159,7 @@ function Profile() {
             type="text"
             className="block border border-gray-400 w-full p-3 rounded mb-4"
             name="Email"
-            defaultValue={logedUserData.email}
+            defaultValue={email}
             onChange={hundleEmailChange}
             placeholder="Email"
             disabled
@@ -158,7 +169,7 @@ function Profile() {
             type="text"
             className="block border border-gray-400 w-full p-3 rounded mb-4"
             name="date"
-            defaultValue={formatedDate}
+            value={formatedDate}
             onChange={hundleDateChange}
             placeholder={"yyyy-mm-dd"}
             disabled
@@ -167,7 +178,7 @@ function Profile() {
             type="text"
             className="block border border-gray-400 w-full p-3 rounded mb-4"
             name="height"
-            defaultValue={logedUserData.height}
+            value={height}
             onChange={hundleHeightChange}
             placeholder={"180" + " cm"}
             disabled
@@ -176,7 +187,7 @@ function Profile() {
             type="text"
             className="block border border-gray-400 w-full p-3 rounded mb-4"
             name="weight"
-            defaultValue={logedUserData.weight}
+            value={weight}
             onChange={hundleWeightChange}
             placeholder={"80" + " kg"}
             disabled
