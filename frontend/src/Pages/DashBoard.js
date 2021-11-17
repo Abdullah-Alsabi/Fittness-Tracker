@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { IoIosFitness } from "react-icons/io";
 import { GiWaterBottle } from "react-icons/gi";
 import { GiBodyHeight } from "react-icons/gi";
@@ -9,44 +10,36 @@ import GaugeIconImg from "../images/gauge-icon-27.jpg";
 import { useNavigate } from "react-router-dom";
 
 function DashBoard() {
-  let [logedUserData, setlogedUserData] = useState();
-
+  let [logedUserData, setlogedUserData] = useState({});
   let [counterWater, setcounterWater] = useState(0);
-
   let [BMI, setBMI] = useState();
   const [BMIText, setBMIText] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const token = localStorage.getItem("Token");
     let user = JSON.parse(atob(token));
-    console.log(user);
+    axios
+      .get(`http://localhost:3001/users/userData/${user._id}`)
+      .then((res) => {
+        setlogedUserData(res.data);
+        if (res.data.weight === 0 || res.data.height === 0) {
+          setBMI(0);
+        } else {
+          let bmiValue = res.data.weight / res.data.height / res.data.height;
+          setBMI(bmiValue);
+        }
+      })
+      .catch((err) => {
+        if (err) throw err;
+      });
+
+    setlogedUserData(user);
     if (user == null || user.type !== "user") {
       navigate("/noAccess");
-    } else {
-      console.log(user);
-      setlogedUserData(user);
     }
   }, []);
-  // function hundlePlusp1() {
-  //   setcounterP1(++counterP1);
-  // }
-  // function hundleMinusp1() {
-  //   setcounterP1(--counterP1);
-  // }
-
-  // function hundlePlusp2() {
-  //   setcounterP2(++counterP2);
-  // }
-  // function hundleMinusp2() {
-  //   setcounterP2(--counterP2);
-  // }
-
-  // function hundlePlusp3() {
-  //   setcounterP3(++counterP3);
-  // }
-  // function hundleMinusp3() {
-  //   setcounterP3(--counterP3);
-  // }
 
   function hundlePlusWater() {
     setcounterWater(++counterWater);
@@ -55,25 +48,36 @@ function DashBoard() {
     setcounterWater(--counterWater);
   }
 
-  function computeBmi() {
-    // let bmiValue = weight / height / height;
-    // setBMI(bmiValue);
-    // let bmiClass = getBmi(bmiValue);
-    // setBMIText(bmiClass);
-  }
+  // function computeBmi() {
+  //   if (logedUserData.weight === 0 || logedUserData.height === 0) {
+  //     setBMI(0);
+  //     setBMIText("your weight is zero ");
+  //     return;
+  //   }
+  //   let bmiValue =
+  //     logedUserData.weight / logedUserData.height / logedUserData.height;
+  //   setBMI(bmiValue);
+  //   let bmiClass = getBmi(bmiValue);
+  //   setBMIText(bmiClass);
+  // }
 
-  function getBmi(bmi) {
-    if (bmi < 18.5) {
-      return "Underweight";
+  function getBmi() {
+    if (BMI == 0) setBMIText("your weight is zero ");
+    if (BMI < 18.5) {
+      setBMIText("Underweight");
+      return;
     }
-    if (bmi >= 18.5 && bmi < 24.9) {
-      return "Normal weight";
+    if (BMI >= 18.5 && BMI < 24.9) {
+      setBMIText("Normal weight");
+      return;
     }
-    if (bmi >= 25 && bmi < 29.9) {
-      return "Overweight";
+    if (BMI >= 25 && BMI < 29.9) {
+      setBMIText("Overweight");
+      return;
     }
-    if (bmi >= 30) {
-      return "Obesity";
+    if (BMI >= 30) {
+      setBMIText("Obesity");
+      return;
     }
   }
 
@@ -158,8 +162,9 @@ function DashBoard() {
         </div>
         <div className="w-4/6">
           <h2 className="text-xl text-white font-medium mt-2"> BMI </h2>
+
           <p className="text-white">{BMI}</p>
-          <p className="text-white">{}</p>
+          <p className="text-white">{BMIText}</p>
         </div>
       </div>
     </div>
