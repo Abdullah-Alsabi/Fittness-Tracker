@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoIosFitness } from "react-icons/io";
 import { GiWaterBottle } from "react-icons/gi";
 import { GiBodyHeight } from "react-icons/gi";
@@ -6,17 +6,27 @@ import { FaWeight } from "react-icons/fa";
 import { GiWeightScale } from "react-icons/gi";
 import GaugeIcon from "../images/Gauge-icon.svg";
 import GaugeIconImg from "../images/gauge-icon-27.jpg";
+import { useNavigate } from "react-router-dom";
 
 function DashBoard() {
-  let [counterP1, setcounterP1] = useState(0);
-  let [counterP2, setcounterP2] = useState(0);
-  let [counterP3, setcounterP3] = useState(0);
+  let [logedUserData, setlogedUserData] = useState();
+
   let [counterWater, setcounterWater] = useState(0);
-  let [height, setheight] = useState(170);
-  let [weight, setweight] = useState(70);
+
   let [BMI, setBMI] = useState();
   const [BMIText, setBMIText] = useState("");
-
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem("Token");
+    let user = JSON.parse(atob(token));
+    console.log(user);
+    if (user == null || user.type !== "user") {
+      navigate("/noAccess");
+    } else {
+      console.log(user);
+      setlogedUserData(user);
+    }
+  }, []);
   // function hundlePlusp1() {
   //   setcounterP1(++counterP1);
   // }
@@ -46,10 +56,10 @@ function DashBoard() {
   }
 
   function computeBmi() {
-    let bmiValue = weight / height / height;
-    setBMI(bmiValue);
-    let bmiClass = getBmi(bmiValue);
-    setBMIText(bmiClass);
+    // let bmiValue = weight / height / height;
+    // setBMI(bmiValue);
+    // let bmiClass = getBmi(bmiValue);
+    // setBMIText(bmiClass);
   }
 
   function getBmi(bmi) {
@@ -75,7 +85,7 @@ function DashBoard() {
         </div>
         <div className="w-4/6">
           <h2 className="text-xl text-white font-medium mt-2"> Program 1 </h2>
-          <p className="text-white">{counterP1} Times</p>
+          <p className="text-white">{logedUserData.program1} Times</p>
         </div>
       </div>
       <div className="flex flex-row  p-4 justify-around items-center  h-36 text-center shadow-md rounded bg-gradient-to-r from-yellow-300 to-primary">
@@ -84,7 +94,7 @@ function DashBoard() {
         </div>
         <div className="w-4/6">
           <h2 className="text-xl text-white font-medium mt-2"> Program 2 </h2>
-          <p className="text-white">{counterP2} Times</p>
+          <p className="text-white">{logedUserData.program2} Times</p>
         </div>
       </div>
       <div className="flex flex-row p-4 justify-around items-center h-36 text-center shadow-md rounded bg-gradient-to-r from-red-400 to-red-700">
@@ -93,7 +103,7 @@ function DashBoard() {
         </div>
         <div className="w-4/6">
           <h2 className="text-xl text-white font-medium mt-2"> Program 3 </h2>
-          <p className="text-white">{counterP3} Times</p>
+          <p className="text-white">{logedUserData.program3} Times</p>
         </div>
       </div>
       <div className="flex flex-row p-4 justify-around items-center h-36 text-center shadow-md rounded bg-gradient-to-r from-green-300 to-blue-700">
@@ -126,7 +136,7 @@ function DashBoard() {
         </div>
         <div className="w-4/6">
           <h2 className="text-xl text-white font-medium mt-2"> Height </h2>
-          <p className="text-white">{height} cm</p>
+          <p className="text-white">{logedUserData.height} cm</p>
         </div>
       </div>
       <div className="flex flex-row p-4 justify-around items-center h-36 text-center shadow-md rounded bg-gradient-to-r from-pink-400 to-gray-500">
@@ -135,7 +145,7 @@ function DashBoard() {
         </div>
         <div className="w-4/6">
           <h2 className="text-xl text-white font-medium mt-2"> Weight </h2>
-          <p className="text-white">{weight} kg</p>
+          <p className="text-white">{logedUserData.weight} kg</p>
         </div>
       </div>
       <div className="flex flex-row p-4 justify-around items-center h-36 text-center shadow-md rounded bg-gradient-to-r from-red-400 to-red-300">
@@ -149,7 +159,7 @@ function DashBoard() {
         <div className="w-4/6">
           <h2 className="text-xl text-white font-medium mt-2"> BMI </h2>
           <p className="text-white">{BMI}</p>
-          <p className="text-white">{BMIText}</p>
+          <p className="text-white">{}</p>
         </div>
       </div>
     </div>

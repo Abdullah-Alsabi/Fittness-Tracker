@@ -1,8 +1,27 @@
 import "./NavBar_style.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-function NavBar() {
+import { useState, useEffect } from "react";
+function NavBar(props) {
   const [flag, setFlag] = useState("none");
+  const [Singin, setSingin] = useState();
+  const [SignOut, setSignOut] = useState();
+  useEffect(() => {
+    let Token = localStorage.getItem("Token");
+    console.log(Token);
+    // console.log(props.auth);
+    if (Token) {
+      setSingin("none");
+      setSignOut("block");
+    } else {
+      setSingin("block");
+      setSignOut("none");
+    }
+  });
+  function handelSignOut() {
+    localStorage.clear();
+    setSignOut("none");
+    setSingin("block");
+  }
   return (
     <div>
       <div className="flex bg-gray-900 text-white justify-between px-4 py-2">
@@ -24,8 +43,22 @@ function NavBar() {
             <rect y="11" width="27" height="5" rx="2.5" fill="white" />
           </svg>
         </button>
-        <Link className="text-lg font-bold" to="/signin">
+        <Link
+          style={{ display: Singin }}
+          className="text-lg font-bold bg-green-700 px-2 rounded-md "
+          to="/signin"
+        >
           sign in
+        </Link>
+        <Link
+          style={{ display: SignOut }}
+          className="text-lg font-bold bg-red-700 px-2 rounded-md"
+          to="/"
+          onClick={() => {
+            handelSignOut();
+          }}
+        >
+          sign out
         </Link>
       </div>
       {/* SIDE BAR */}

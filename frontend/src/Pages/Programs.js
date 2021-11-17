@@ -52,7 +52,7 @@ function Programs() {
               <div className="relative top-1/2 w-full flex">
                 <p className="w-2/3">
                   {el.exercises.length} exercises,{" "}
-                  {totalDurations(el.exercises)} min
+                  {totalDurations(el.exercises)} sec
                 </p>
                 <button
                   onClick={() => {

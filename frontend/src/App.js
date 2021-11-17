@@ -13,11 +13,11 @@ import AddNewProgram from "./Pages/Admin/AddNewProgram";
 import EditProgram from "./Pages/Admin/EditProgram";
 
 function App() {
+  const token = localStorage.getItem("Token");
   return (
     <div className="bg-gray-800  min-h-screen">
       <BrowserRouter>
-        <NavBar />
-
+        <NavBar  />
         <Routes>
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/programs" element={<Programs />} />
@@ -29,11 +29,9 @@ function App() {
           <Route path="/exercises/:id" element={<Exercises />} />
           <Route path="/AddNewProgram" element={<AddNewProgram />} />
           <Route path="/EditProgram/:id" element={<EditProgram />} />
-
         </Routes>
       </BrowserRouter>
     </div>
   );
 }
-
 export default App;
