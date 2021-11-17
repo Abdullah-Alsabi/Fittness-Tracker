@@ -29,6 +29,20 @@ function DashBoard() {
         } else {
           let bmiValue =
             res.data.weight / (res.data.height / 100) / (res.data.height / 100);
+
+          if (bmiValue == 0) setBMIText("your weight is zero ");
+          if (bmiValue < 18.5) {
+            setBMIText("Underweight");
+          }
+          if (bmiValue >= 18.5 && bmiValue < 24.9) {
+            setBMIText("Normal weight");
+          }
+          if (bmiValue >= 25 && bmiValue < 29.9) {
+            setBMIText("Overweight");
+          }
+          if (bmiValue >= 30) {
+            setBMIText("Obesity");
+          }
           setBMI(Math.round(bmiValue * 100) / 100);
         }
       })
@@ -47,39 +61,6 @@ function DashBoard() {
   }
   function hundleMinusWater() {
     setcounterWater(--counterWater);
-  }
-
-  // function computeBmi() {
-  //   if (logedUserData.weight === 0 || logedUserData.height === 0) {
-  //     setBMI(0);
-  //     setBMIText("your weight is zero ");
-  //     return;
-  //   }
-  //   let bmiValue =
-  //     logedUserData.weight / logedUserData.height / logedUserData.height;
-  //   setBMI(bmiValue);
-  //   let bmiClass = getBmi(bmiValue);
-  //   setBMIText(bmiClass);
-  // }
-
-  function getBmi() {
-    if (BMI == 0) setBMIText("your weight is zero ");
-    if (BMI < 18.5) {
-      setBMIText("Underweight");
-      return;
-    }
-    if (BMI >= 18.5 && BMI < 24.9) {
-      setBMIText("Normal weight");
-      return;
-    }
-    if (BMI >= 25 && BMI < 29.9) {
-      setBMIText("Overweight");
-      return;
-    }
-    if (BMI >= 30) {
-      setBMIText("Obesity");
-      return;
-    }
   }
 
   return (
