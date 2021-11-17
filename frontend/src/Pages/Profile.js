@@ -1,40 +1,124 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 import "./Pages.css";
+
 function Profile() {
   const navigate = useNavigate();
   const [logedUserData, setlogedUserData] = useState();
+  const [loading, setloading] = useState(true);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [date, setDate] = useState("");
+  const [height, setheight] = useState(0);
+  const [weight, setWeight] = useState(0);
+
+  //get data
   useEffect(() => {
     const token = localStorage.getItem("Token");
     let user = JSON.parse(atob(token));
-    console.log(user);
-    if (user == null || user.type != "user") {
-      navigate("/noAccess");
-    } else {
-      setlogedUserData(user);
-    }
-  }, []);
+    axios
+      .get(`/userData/${user._id}`)
+      .then((res) => {
+        setlogedUserData(res.data);
+      })
+      .catch((err) => {
+        if (err) console.log(err);
+      });
+  });
 
-  console.log(logedUserData);
-  let date = new Date();
-  let month = date.getMonth() + 1;
-  let day = date.getDate();
-  let year = date.getFullYear();
-  let newdate = year + "/" + month + "/" + day;
+  // loading component
+  if (loading) return <div className="text-white">LOADING ...</div>;
+
+  // hundle date
+  let userBirthDate = logedUserData.birthDate;
+
+  function stringToDate(_date, _format, _delimiter) {
+    let arr = _date.split("T");
+    let dateWithOutTime = arr[0];
+    var formatLowerCase = _format.toLowerCase();
+    var formatItems = formatLowerCase.split(_delimiter);
+    var dateItems = dateWithOutTime.split(_delimiter);
+    var monthIndex = formatItems.indexOf("mm");
+    var dayIndex = formatItems.indexOf("dd");
+    var yearIndex = formatItems.indexOf("yyyy");
+    var month = parseInt(dateItems[monthIndex]);
+    month -= 1;
+    var formatedDate = new Date(
+      dateItems[yearIndex],
+      month,
+      dateItems[dayIndex]
+    );
+    console.log(formatedDate);
+    return formatedDate;
+  }
+  let dateAfterConvert = stringToDate(userBirthDate, "yyyy-mm-dd", "-");
+
+  let formatedDate =
+    dateAfterConvert.getFullYear() +
+    "-" +
+    (dateAfterConvert.getMonth() + 1) +
+    "-" +
+    dateAfterConvert.getDate();
+
+  //end of hundle date
+
+  //hundle Edit btn
   function hundleEdit() {
     let elements = document.getElementsByTagName("input");
     for (var i = 0; i < elements.length; i++) {
       elements[i].disabled = false;
     }
   }
+
+  function hundleNameChange(e) {
+    console.log(e.target.value);
+    setName(e.target.value);
+  }
+  function hundleEmailChange(e) {
+    console.log(e.target.value);
+    setEmail(e.target.value);
+  }
+  function hundleDateChange(e) {
+    console.log(e.target.value);
+    setDate(e.target.value);
+  }
+  function hundleHeightChange(e) {
+    console.log(e.target.value);
+    setheight(e.target.value);
+  }
+  function hundleWeightChange(e) {
+    console.log(e.target.value);
+    setWeight(e.target.value);
+  }
+  //hundle update btn
   function hundleUpdate() {
     let elements = document.getElementsByTagName("input");
     for (var i = 0; i < elements.length; i++) {
       elements[i].disabled = true;
     }
+    const data = {
+      name: name,
+      email: email,
+      birthDate: new Date(),
+      height: height,
+      weight: weight,
+    };
+    // console.log(new Date(date));
+    axios
+      .put(`http://localhost:3001/users/edit/${logedUserData._id}`, data)
+      .then((res) => {
+        navigate("/profile");
+      })
+      .catch((err) => {
+        if (err) console.log(err);
+      });
   }
 
+  // console.log(logedUserData._id);
+
+  // function return
   return (
     <div className=" min-h-full flex flex-col p-2 pt-4 md:p-10 lg:p-10 xl:p-10">
       <div className="container  m-auto  flex flex-1 flex-col items-center justify-center px-20 ">
@@ -55,6 +139,8 @@ function Profile() {
             type="text"
             className="block border border-gray-400 w-full p-3 rounded mb-4"
             name="Name"
+            defaultValue={logedUserData.name}
+            onChange={hundleNameChange}
             placeholder="Abdullah"
             disabled
           />
@@ -62,27 +148,27 @@ function Profile() {
             type="text"
             className="block border border-gray-400 w-full p-3 rounded mb-4"
             name="Email"
+            defaultValue={logedUserData.email}
+            onChange={hundleEmailChange}
             placeholder="Email"
             disabled
           />
-          <input
-            type="password"
-            className="block border border-gray-400 w-full p-3 rounded mb-4"
-            name="Password"
-            placeholder="Password"
-            disabled
-          />
+
           <input
             type="text"
             className="block border border-gray-400 w-full p-3 rounded mb-4"
             name="date"
-            placeholder={newdate}
+            defaultValue={formatedDate}
+            onChange={hundleDateChange}
+            placeholder={"yyyy-mm-dd"}
             disabled
           />
           <input
             type="text"
             className="block border border-gray-400 w-full p-3 rounded mb-4"
             name="height"
+            defaultValue={logedUserData.height}
+            onChange={hundleHeightChange}
             placeholder={"180" + " cm"}
             disabled
           />
@@ -90,6 +176,8 @@ function Profile() {
             type="text"
             className="block border border-gray-400 w-full p-3 rounded mb-4"
             name="weight"
+            defaultValue={logedUserData.weight}
+            onChange={hundleWeightChange}
             placeholder={"80" + " kg"}
             disabled
           />

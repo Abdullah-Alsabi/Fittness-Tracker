@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-
+import { useNavigate, useParams } from "react-router-dom";
 import { BsPlayCircleFill } from "react-icons/bs";
 import { BsPauseCircleFill } from "react-icons/bs";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+
+
+
 
 function Exercises() {
   const [ExercisesName, setExercisesName] = useState("");

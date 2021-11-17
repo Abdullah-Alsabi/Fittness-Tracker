@@ -51,12 +51,15 @@ router.post("/add", (req, res) => {
 router.put("/edit/:id", (req, res) => {
   users.findById(req.params.id).then((user) => {
     if (req.body.name != undefined) user.name = req.body.name;
+    if (req.body.email != undefined) user.email = req.body.email;
     if (req.body.birthDate != undefined) user.birthDate = req.body.birthDate;
     if (req.body.height != undefined) user.height = req.body.height;
     if (req.body.weight != undefined) user.weight = req.body.weight;
     if (req.body.program1 != undefined) user.program1 = req.body.program1;
     if (req.body.program2 != undefined) user.program2 = req.body.program2;
     if (req.body.program3 != undefined) user.program3 = req.body.program3;
+    if (req.body.type != undefined) user.type = req.body.type;
+
     user
       .save()
       .then((data) => res.json(data))
