@@ -17,21 +17,26 @@ function HomePage() {
         </h1>
         <img src={header} alt="" />
       </div>
-      {/*========= FIRST PART =========*/}
-      <div className="flex px-10 py-3 text-white flex-col md:flex-row lg:px-28 xl:px-40 bg-gray-700">
-        <div className="lg:w-1/2 md:px-2 flex items-center">
-          <img
-            className="transform  -skew-x-12"
-            src="https://www.cnet.com/a/img/sRejNDr7D67rMcvwI11v6xrJcho=/940x0/2019/11/12/e66cc0f3-c6b8-4f6e-9561-e23e08413ce1/gettyimages-1002863304.jpg"
-            alt=""
-          />
-        </div>
-        <div className="pt-2 flex flex-col justify-center font-mono lg:w-1/2 md:px-2 md:text-xl lg:text-2xl xl:text-3xl items-center text-center">
-          <h1 className="font-bold">Beginners</h1>
-          <hr className="text-white h-1 w-3/4" />
-          Your first step is learning the basics of how to set up a workout
-          program.
-        </div>
+      <div className=" bg-gray-700 m-0 pt-1">
+        <h1 className="text-xl text-white  m-auto w-max border-2  transform -skew-x-12 py-1 lg:py-2 px-4 lg:px-10  my-3">
+          <b>Our Programs</b>
+        </h1>
+        {/*========= FIRST PART =========*/}
+        <div className="flex px-10 py-3 text-white flex-col md:flex-row lg:px-28 xl:px-40 bg-gray-700">
+          <div className="lg:w-1/2 md:px-2 flex items-center">
+            <img
+              className="transform  -skew-x-12"
+              src="https://www.cnet.com/a/img/sRejNDr7D67rMcvwI11v6xrJcho=/940x0/2019/11/12/e66cc0f3-c6b8-4f6e-9561-e23e08413ce1/gettyimages-1002863304.jpg"
+              alt=""
+            />
+          </div>
+          <div className="pt-2 flex flex-col justify-center font-mono lg:w-1/2 md:px-2 md:text-xl lg:text-2xl xl:text-3xl items-center text-center">
+            <h1 className="font-bold">Beginners</h1>
+            <hr className="text-white h-1 w-3/4" />
+            Your first step is learning the basics of how to set up a workout
+            program.
+          </div>
+        </div>{" "}
       </div>
       {/*========= SECOND PART =========*/}
       <div className="flex  px-10 py-3 text-white flex-col md:flex-row-reverse  lg:px-28 xl:px-40 ">
@@ -66,7 +71,7 @@ function HomePage() {
         </div>
       </div>
       <div className=" py-3">
-        <h1 className="text-xl text-white m-auto w-max border-2  transform -skew-x-12 py-2 px-10 my-3">
+        <h1 className="text-xl text-white m-auto w-max border-2  transform -skew-x-12 py-1 lg:py-2 px-4 lg:px-10 my-3">
           <b>Contact Us</b>
         </h1>
         <div className="flex flex-col md:flex-row justify-center">
