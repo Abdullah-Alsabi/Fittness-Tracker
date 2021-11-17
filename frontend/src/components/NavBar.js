@@ -111,6 +111,13 @@ function NavBar(props) {
           >
             DASHBOARD
           </Link>
+          <Link
+            onClick={() => setFlag("none")}
+            className="block hover:bg-gray-600 py-3 "
+            to="/admin"
+          >
+            ADMIN
+          </Link>
         </div>
         <div
           className="h-screen block w-full bg-transparent fixed "

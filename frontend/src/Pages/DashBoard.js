@@ -27,8 +27,9 @@ function DashBoard() {
         if (res.data.weight === 0 || res.data.height === 0) {
           setBMI(0);
         } else {
-          let bmiValue = res.data.weight / res.data.height / res.data.height;
-          setBMI(bmiValue);
+          let bmiValue =
+            res.data.weight / (res.data.height / 100) / (res.data.height / 100);
+          setBMI(Math.round(bmiValue * 100) / 100);
         }
       })
       .catch((err) => {
