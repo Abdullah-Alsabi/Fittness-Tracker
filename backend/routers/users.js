@@ -153,5 +153,4 @@ router.get("/userData/:id", (req, res) => {
   });
 });
 
-
 module.exports = router;
