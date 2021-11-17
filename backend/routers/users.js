@@ -120,5 +120,38 @@ router.post("/checkSignIn", (req, res) => {
     }
   );
 });
+//
+router.put("/incProgram/:id/:title", (req, res) => {
+  req.params.id;
+
+  users.findByIdAndUpdate(req.params.id).then((user) => {
+    console.log(user);
+    if (req.params.title == "program1") {
+      user.program1 += 1;
+    } else if (req.params.title == "program2") {
+      user.program2 += 1;
+    } else if (req.params.title == "program3") {
+      user.program3 += 1;
+    }
+    user
+      .save()
+      .then((data) => res.json(data))
+      .catch((err) => {
+        if (err) throw err;
+      });
+  });
+});
+// ---------------------
+router.get("/userData/:id", (req, res) => {
+  users.findById(req.params.id).then((user) => {
+    user
+      .save()
+      .then((data) => res.json(data))
+      .catch((err) => {
+        if (err) throw err;
+      });
+  });
+});
+
 
 module.exports = router;

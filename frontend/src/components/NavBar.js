@@ -7,7 +7,7 @@ function NavBar(props) {
   const [SignOut, setSignOut] = useState();
   useEffect(() => {
     let Token = localStorage.getItem("Token");
-    console.log(Token);
+    // console.log(Token);
     // console.log(props.auth);
     if (Token) {
       setSingin("none");
