@@ -18,7 +18,7 @@ router.post("/add", (req, res) => {
   const name = req.body.name;
   const email = req.body.email;
   const password = req.body.password;
-  const birthday = req.body.birthday;
+  const birthDate = req.body.birthDate;
   const program1 = 0;
   const program2 = 0;
   const program3 = 0;
@@ -29,7 +29,7 @@ router.post("/add", (req, res) => {
     name,
     email,
     password,
-    birthday,
+    birthDate,
     program1,
     program2,
     program3,
@@ -51,7 +51,7 @@ router.post("/add", (req, res) => {
 router.put("/edit/:id", (req, res) => {
   users.findById(req.params.id).then((user) => {
     if (req.body.name != undefined) user.name = req.body.name;
-    if (req.body.birthday != undefined) user.name = req.body.birthday;
+    if (req.body.birthDate != undefined) user.birthDate = req.body.birthDate;
     if (req.body.height != undefined) user.height = req.body.height;
     if (req.body.weight != undefined) user.weight = req.body.weight;
     if (req.body.program1 != undefined) user.program1 = req.body.program1;
@@ -107,6 +107,8 @@ router.post("/checkSignIn", (req, res) => {
             program1: obj.program1,
             program2: obj.program2,
             program3: obj.program3,
+            birthDate: obj.birthDate,
+            type: obj.type,
           },
           JWT_SECRT
         );

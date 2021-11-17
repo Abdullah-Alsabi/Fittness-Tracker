@@ -1,6 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+
 import "./Pages.css";
 function Profile() {
+  const navigate = useNavigate();
+  const [logedUserData, setlogedUserData] = useState();
+  useEffect(() => {
+    const token = localStorage.getItem("Token");
+    let user = JSON.parse(atob(token));
+    console.log(user);
+    if (user == null || user.type != "user") {
+      navigate("/noAccess");
+    } else {
+      setlogedUserData(user);
+    }
+  }, []);
+
+  console.log(logedUserData);
   let date = new Date();
   let month = date.getMonth() + 1;
   let day = date.getDate();
@@ -93,4 +109,3 @@ function Profile() {
 }
 
 export default Profile;
-

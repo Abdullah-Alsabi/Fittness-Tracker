@@ -1,11 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import Axios from "axios";
+import "./Pages.css";
 function Signup() {
   let [name, setName] = useState("");
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   let [passwordTwo, setPasswordTwo] = useState("");
+  let [month, setMonth] = useState();
+  let [day, setDay] = useState();
+  let [year, setYear] = useState();
+
+  const navigate = useNavigate();
 
   function hundleNameChange(e) {
     console.log(e.target.value);
@@ -23,19 +29,34 @@ function Signup() {
     console.log(e.target.value);
     setPasswordTwo(e.target.value);
   }
+  function hundleMonthChange(e) {
+    console.log(e.target.value);
+    setMonth(e.target.value);
+  }
+  function hundleDayChange(e) {
+    console.log(e.target.value);
+    setDay(e.target.value);
+  }
+  function hundleYearChange(e) {
+    console.log(e.target.value);
+    setYear(e.target.value);
+  }
 
   function hundleRgister(e) {
+    let d = new Date(year, month - 1, day + 1);
+    console.log(d);
     e.preventDefault();
     if (password === passwordTwo && true) {
       let user = {
         name: name,
         email: email,
         password: password,
+        birthDate: d,
       };
       Axios.post("http://localhost:3001/users/add", user)
         .then((res) => {
           console.log(res.data);
-          res.redirect("/");
+          navigate("/signin");
         })
         .catch((err) => {
           console.log(err);
@@ -77,9 +98,10 @@ function Signup() {
           />
           <div className="grid grid-cols-3 gap-2">
             <select
-              className="block border border-gray-400 w-full p-3 rounded mb-4"
+              className="block border border-gray-400 w-full p-3 rounded mb-4  "
               name="monthes"
               id="monthes"
+              onChange={hundleMonthChange}
             >
               <option value={1}>January</option>
               <option value={2}>February</option>
@@ -95,14 +117,14 @@ function Signup() {
               <option value={12}>December</option>
             </select>
             <input
-              onChange={hundleEmailChange}
+              onChange={hundleDayChange}
               type="text"
               className="block border border-gray-400 w-full p-3 rounded mb-4"
               name="day"
               placeholder="day"
             />
             <input
-              onChange={hundleEmailChange}
+              onChange={hundleYearChange}
               type="text"
               className="block border border-gray-400 w-full p-3 rounded mb-4"
               name="year"
