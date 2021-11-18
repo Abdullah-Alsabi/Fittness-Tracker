@@ -64,6 +64,6 @@ In Fitness Tracker users can take fitness classes wherever and whenever they wan
   Presentation slides
   </a>
 
-  - <a href="https://trello.com/b/HMUEJYKJ">
+- <a href="https://trello.com/b/HMUEJYKJ">
     Trello
     </a>
