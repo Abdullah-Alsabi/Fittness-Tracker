@@ -52,8 +52,8 @@ In Fitness Tracker users can take fitness classes wherever and whenever they wan
 
 ## Links:-
 
- <a href="https://fitnessappdemo.herokuapp.com/">
-  Fitness Tracker 
+ - <a href="https://fitnessappdemo.herokuapp.com/">
+  Fitness Tracker Demo
   </a>
 
 - <a href="https://www.figma.com/file/qtEsO9EGZVkcZh1AdXTOkQ/project-unit-2?node-id=0%3A1">
