@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7bc553cc.chunk.css",
+    "main.js": "/static/js/main.5314fb6b.chunk.js",
+    "main.js.map": "/static/js/main.5314fb6b.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.a547634e.js",
+    "runtime-main.js.map": "/static/js/runtime-main.a547634e.js.map",
+    "static/js/2.097ba5ff.chunk.js": "/static/js/2.097ba5ff.chunk.js",
+    "static/js/2.097ba5ff.chunk.js.map": "/static/js/2.097ba5ff.chunk.js.map",
+    "static/js/3.fe11faf7.chunk.js": "/static/js/3.fe11faf7.chunk.js",
+    "static/js/3.fe11faf7.chunk.js.map": "/static/js/3.fe11faf7.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.7bc553cc.chunk.css.map": "/static/css/main.7bc553cc.chunk.css.map",
+    "static/js/2.097ba5ff.chunk.js.LICENSE.txt": "/static/js/2.097ba5ff.chunk.js.LICENSE.txt",
+    "static/media/Gauge-icon.d630f215.svg": "/static/media/Gauge-icon.d630f215.svg",
+    "static/media/background.5ed7a60d.jfif": "/static/media/background.5ed7a60d.jfif",
+    "static/media/p1.b2ab0885.jpg": "/static/media/p1.b2ab0885.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a547634e.js",
+    "static/js/2.097ba5ff.chunk.js",
+    "static/css/main.7bc553cc.chunk.css",
+    "static/js/main.5314fb6b.chunk.js"
+  ]
+}
