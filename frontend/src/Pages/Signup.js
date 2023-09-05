@@ -53,7 +53,7 @@ function Signup() {
         password: password,
         birthDate: d,
       };
-      Axios.post("http://localhost:3001/users/add", user)
+      Axios.post("/users/add", user)
         .then((res) => {
           console.log(res.data);
           navigate("/signin");

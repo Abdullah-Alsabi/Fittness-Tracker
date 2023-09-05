@@ -4,9 +4,6 @@ import { BsPlayCircleFill } from "react-icons/bs";
 import { BsPauseCircleFill } from "react-icons/bs";
 import axios from "axios";
 
-
-
-
 function Exercises() {
   const [ExercisesName, setExercisesName] = useState("");
   const [ExercisesDuration, setExercisesDuration] = useState(0);
@@ -69,7 +66,7 @@ function Exercises() {
   useEffect(() => {
     console.log(params.id);
     axios
-      .get(`http://localhost:3001/programs/getProgram/${params.id}`)
+      .get(`/programs/getProgram/${params.id}`)
       .then((res) => {
         console.log(res.data);
         setPrograms(res.data);
@@ -89,21 +86,21 @@ function Exercises() {
     let user = JSON.parse(atob(token));
     if (programs.title === "Beginners") {
       axios
-        .put(`http://localhost:3001/users/incProgram/${user._id}/program1`)
+        .put(`/users/incProgram/${user._id}/program1`)
         .then(() => {})
         .catch((err) => {
           if (err) console.log(err);
         });
     } else if (programs.title === "intermediate") {
       axios
-        .put(`http://localhost:3001/users/incProgram/${user._id}/program2`)
+        .put(`/users/incProgram/${user._id}/program2`)
         .then(() => {})
         .catch((err) => {
           if (err) console.log(err);
         });
     } else if (programs.title === "Experts") {
       axios
-        .put(`http://localhost:3001/users/incProgram/${user._id}/program3`)
+        .put(`/users/incProgram/${user._id}/program3`)
         .then(() => {})
         .catch((err) => {
           if (err) console.log(err);

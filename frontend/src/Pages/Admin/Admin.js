@@ -7,7 +7,7 @@ function Admin() {
   const [programs, setPrograms] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3001/programs/")
+      .get("/programs/")
       .then((res) => {
         console.log(res.data);
         setPrograms(res.data);
@@ -27,7 +27,7 @@ function Admin() {
   }
   function deleteProgram(id) {
     axios
-      .delete("http://localhost:3001/programs/delete/" + id)
+      .delete("  /programs/delete/" + id)
       .then((res) => {
         console.log(res.data);
         setPrograms(res.data);

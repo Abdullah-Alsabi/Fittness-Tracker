@@ -19,7 +19,7 @@ function Profile() {
     const token = localStorage.getItem("Token");
     let user = JSON.parse(atob(token));
     axios
-      .get(`http://localhost:3001/users/userData/${user._id}`)
+        .get(`/users/userData/${user._id}`)
       .then((res) => {
         setlogedUserData(res.data);
         setName(res.data.name);
@@ -117,7 +117,7 @@ function Profile() {
     const token = localStorage.getItem("Token");
     let user = JSON.parse(atob(token));
     axios
-      .put(`http://localhost:3001/users/edit/${user._id}`, data)
+        .put(`/users/edit/${user._id}`, data)
       .then((res) => {
         navigate("/profile");
         console.log(res);

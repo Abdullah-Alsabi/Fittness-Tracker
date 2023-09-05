@@ -21,7 +21,7 @@ function AddNewProgram() {
       background: Link,
     };
     axios
-      .post("http://localhost:3001/programs/add", data)
+      .post("/programs/add", data)
       .then((res) => {
         navigate("/admin");
       })

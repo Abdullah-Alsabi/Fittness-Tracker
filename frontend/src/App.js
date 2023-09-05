@@ -13,8 +13,10 @@ import AddNewProgram from "./Pages/Admin/AddNewProgram";
 import EditProgram from "./Pages/Admin/EditProgram";
 import PageNotFoundPage from "./Pages/PageNotFoundPage";
 import NoAccessPage from "./Pages/NoAccessPage";
+import axios from "axios";
 function App() {
   const token = localStorage.getItem("Token");
+  axios.url = "https://fitness-app-g5w4.onrender.com";
   return (
     <div className="bg-gray-800  min-h-screen">
       <BrowserRouter>

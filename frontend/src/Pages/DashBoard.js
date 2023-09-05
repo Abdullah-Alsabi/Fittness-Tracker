@@ -21,7 +21,7 @@ function DashBoard() {
     const token = localStorage.getItem("Token");
     let user = JSON.parse(atob(token));
     axios
-      .get(`http://localhost:3001/users/userData/${user._id}`)
+      .get(`/users/userData/${user._id}`)
       .then((res) => {
         setlogedUserData(res.data);
         if (res.data.weight === 0 || res.data.height === 0) {

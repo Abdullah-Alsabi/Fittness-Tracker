@@ -10,7 +10,7 @@ function Signin() {
   function checkLogin() {
     const data = { email: Email, password: Password };
     axios
-      .post("http://localhost:3001/users/checkSignIn", data)
+      .post("/users/checkSignIn", data)
       .then((res) => {
         if (!res.data) {
           alert("The email/password is incorrect!!");
