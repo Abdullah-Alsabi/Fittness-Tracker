@@ -16,7 +16,7 @@ function Exercises() {
   const RestObj = {
     name: "Rest",
     duration: 15,
-    link: "https://lh3.googleusercontent.com/proxy/F0_6rPop8sEdbwUpjMZSSzLR7CV9n0mzZjOggPwpVavaf0OhD6nhTyLgggjAwjCmZ16aNhoF2FWLm7_1Gkw2P6hK-nwpTn1cELEXKrA",
+    link: "https://upload.wikimedia.org/wikipedia/commons/1/15/Man_Tired_After_Workout_GIF_Animation_Loop.gif",
   };
 
   const params = useParams();
