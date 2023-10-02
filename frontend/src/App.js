@@ -16,7 +16,7 @@ import NoAccessPage from "./Pages/NoAccessPage";
 import axios from "axios";
 function App() {
   const token = localStorage.getItem("Token");
-  axios.defaults.baseURL = "https://fitness-app-g5w4.onrender.com/";
+  axios.defaults.baseURL = "https://fitness-app-g5w4.onrender.com:10000";
   return (
     <div className="bg-gray-800  min-h-screen">
       <BrowserRouter>
